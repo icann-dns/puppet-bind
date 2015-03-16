@@ -63,6 +63,9 @@
 #  $zones:
 #   Hash of managed zones and their configuration. The key is the zone name
 #   and the value is an array of config lines. Default: empty
+#  $tsig:
+#   Hash of managed tsig keys and their configuration. The key is the tsig keys name
+#   and the value is an array of config lines. Default: empty
 #  $includes:
 #   Array of absolute paths to named.conf include files. Default: empty
 #
@@ -83,6 +86,12 @@
 #        'type slave',
 #        'file "slaves/example.org"',
 #        'masters { mymasters; }',
+#      ],
+#    }
+#    keys                 => { 
+#      'example.org-tsig' => [
+#        'algorithm hmac-md5',
+#        'secret "aaabbbcccddd"',
 #      ],
 #    }
 #  }
@@ -117,6 +126,7 @@ define bind::server::conf (
   $hostname               = 'none',
   $server_id              = undef,
   $zones                  = {},
+  $keys                   = {},
   $includes               = [],
   $views                  = {},
 ) {

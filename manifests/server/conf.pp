@@ -15,6 +15,10 @@
 #   IPv6 port to listen on. Set to false to disable. Default: '53'
 #  $listen_on_v6_addr:
 #   Array of IPv6 addresses to listen on. Default: [ '::1' ]
+#  $transfer_source_addr:
+#   IPv4 address to use for XFR. Default First element of $listen_on_addr $listen_on_addr[0]
+#  $transfer_source_addr_v6:
+#   IPv6 address to use for XFR. Default First element of $listen_on_v6_addr $listen_on_v6_addr[0]
 #  $forwarders:
 #   Array of forwarders IP addresses. Default: empty
 #  $directory:
@@ -97,38 +101,40 @@
 #  }
 #
 define bind::server::conf (
-  $acls                   = {},
-  $masters                = {},
-  $listen_on_port         = '53',
-  $listen_on_addr         = [ '127.0.0.1' ],
-  $listen_on_v6_port      = '53',
-  $listen_on_v6_addr      = [ '::1' ],
-  $forwarders             = [],
-  $directory              = '/var/named',
-  $managed_keys_directory = undef,
-  $hostname               = undef,
-  $server_id              = undef,
-  $version                = undef,
-  $dump_file              = '/var/named/data/cache_dump.db',
-  $statistics_file        = '/var/named/data/named_stats.txt',
-  $memstatistics_file     = '/var/named/data/named_mem_stats.txt',
-  $allow_query            = [ 'localhost' ],
-  $allow_query_cache      = [],
-  $recursion              = 'yes',
-  $allow_recursion        = [],
-  $allow_transfer         = [],
-  $check_names            = [],
-  $extra_options          = {},
-  $dnssec_enable          = 'yes',
-  $dnssec_validation      = 'auto',
-  $dnssec_lookaside       = undef,
-  $bindkeys_file          = undef,
-  $hostname               = 'none',
-  $server_id              = undef,
-  $zones                  = {},
-  $keys                   = {},
-  $includes               = [],
-  $views                  = {},
+  $acls                    = {},
+  $masters                 = {},
+  $listen_on_port          = '53',
+  $listen_on_addr          = [ '127.0.0.1' ],
+  $listen_on_v6_port       = '53',
+  $listen_on_v6_addr       = [ '::1' ],
+  $transfer_source_addr    = $listen_on_addr[0],
+  $transfer_source_addr_v6 = $listen_on_v6_addr[0],
+  $forwarders              = [],
+  $directory               = '/var/named',
+  $managed_keys_directory  = undef,
+  $hostname                = undef,
+  $server_id               = undef,
+  $version                 = undef,
+  $dump_file               = '/var/named/data/cache_dump.db',
+  $statistics_file         = '/var/named/data/named_stats.txt',
+  $memstatistics_file      = '/var/named/data/named_mem_stats.txt',
+  $allow_query             = [ 'localhost' ],
+  $allow_query_cache       = [],
+  $recursion               = 'yes',
+  $allow_recursion         = [],
+  $allow_transfer          = [],
+  $check_names             = [],
+  $extra_options           = {},
+  $dnssec_enable           = 'yes',
+  $dnssec_validation       = 'auto',
+  $dnssec_lookaside        = undef,
+  $bindkeys_file           = undef,
+  $hostname                = 'none',
+  $server_id               = undef,
+  $zones                   = {},
+  $keys                    = {},
+  $includes                = [],
+  $views                   = {},
 ) {
 
   # Everything is inside a single template

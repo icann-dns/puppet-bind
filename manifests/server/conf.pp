@@ -109,6 +109,8 @@ define bind::server::conf (
   $listen_on_v6_addr       = [ '::1' ],
   $transfer_source_addr    = $listen_on_addr[0],
   $transfer_source_addr_v6 = $listen_on_v6_addr[0],
+  $notify_source_addr      = $listen_on_addr[0],
+  $notify_source_addr_v6   = $listen_on_v6_addr[0],
   $forwarders              = [],
   $directory               = '/var/named',
   $managed_keys_directory  = undef,

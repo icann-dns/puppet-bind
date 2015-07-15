@@ -141,7 +141,9 @@ define bind::server::conf (
 
   # Everything is inside a single template
   file { $directory:
-      ensure => directory,
+    ensure => directory,
+    owner  => 'bind',
+    group  => 'bind',
   }
   file { $title:
     notify  => Class['bind::service'],

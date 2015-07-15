@@ -133,6 +133,8 @@ define bind::server::conf (
 
   # Everything is inside a single template
   file { $directory:
+      owner  => 'bind',
+      group  => 'bind',
       ensure => directory,
   }
   file { $title:

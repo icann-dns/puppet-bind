@@ -46,10 +46,10 @@ options {
 <% if ! @transfer_source_addr_v6.empty? -%>
     transfer-source-v6 <%= transfer_source_addr_v6 %> ;
 <% end -%>
-<% if @notify_source_addr -%>
+<% if ! @notify_source_addr.any? -%>
     notify-source <%= notify_source_addr %> ;
 <% end -%>
-<% if @notify_source_addr_v6 -%>
+<% if ! @notify_source_addr_v6.any? -%>
     notify-source-v6 <%= notify_source_addr_v6 %> ;
 <% end -%>
 <% if !@forwarders.empty? -%>

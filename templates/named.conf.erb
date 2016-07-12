@@ -40,10 +40,10 @@ options {
 <% if @listen_on_v6_port -%>
     listen-on-v6 port <%= @listen_on_v6_port %> { <%= @listen_on_v6_addr.join("; ") %>; };
 <% end -%>
-<% if @transfer_source_addr -%>
+<% if ! @transfer_source_addr.empty? -%>
     transfer-source <%= transfer_source_addr %> ;
 <% end -%>
-<% if @transfer_source_addr_v6 -%>
+<% if ! @transfer_source_addr_v6.empty? -%>
     transfer-source-v6 <%= transfer_source_addr_v6 %> ;
 <% end -%>
 <% if @notify_source_addr -%>

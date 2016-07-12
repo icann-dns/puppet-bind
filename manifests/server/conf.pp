@@ -58,10 +58,6 @@
 #   DNSSEC lookaside type. Default: empty
 #  $bindkeys_file:
 #   The pathname of a file to override the built-in trusted keys provided by named
-#  $hostname
-#   The host-name (a quotes string) the server should report via a query of the
-#   name hostname.bind with type TXT, class CHAOS.  Specifying none disables.
-#   Defaut: None
 #  $server_id
 #   The ID the server will return via a query for ID.SERVER with type TXT,
 #   under class CH (CHAOS). Default: empty
@@ -115,7 +111,7 @@ define bind::server::conf (
   $forwarders              = [],
   $directory               = '/var/named',
   $managed_keys_directory  = undef,
-  $hostname                = undef,
+  $hostname                = 'none',
   $server_id               = undef,
   $version                 = undef,
   $dump_file               = '/var/named/data/cache_dump.db',
@@ -132,8 +128,6 @@ define bind::server::conf (
   $dnssec_validation       = 'auto',
   $dnssec_lookaside        = undef,
   $bindkeys_file           = undef,
-  $hostname                = 'none',
-  $server_id               = undef,
   $zones                   = {},
   $keys                    = {},
   $includes                = [],

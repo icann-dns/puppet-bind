@@ -62,8 +62,8 @@ define bind::server::file (
 
   if ! defined(File[$zonedir]) {
     file { $zonedir:
-      ensure  => 'directory',
-      owner   => $owner,
+      ensure  => directory,
+      owner   => $bindowner,
       group   => $bindgroup,
       mode    => $dirmode,
       require => Class['::bind::package'],

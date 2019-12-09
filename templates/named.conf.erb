@@ -92,10 +92,6 @@ options {
 <% end -%>
     dnssec-enable <%= @dnssec_enable %>;
     dnssec-validation <%= @dnssec_validation %>;
-    dnssec-lookaside <%= @dnssec_lookaside %>;
-
-    /* Path to ISC DLV key */
-    bindkeys-file "/etc/named.iscdlv.key";
 };
 
 logging {

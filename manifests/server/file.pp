@@ -30,7 +30,7 @@
 #
 define bind::server::file (
   $zonedir     = '/var/named',
-  $owner       = 'root',
+  $owner       = undef,
   $group       = undef,
   $mode        = '0640',
   $dirmode     = '0750',
@@ -41,6 +41,12 @@ define bind::server::file (
 ) {
 
   include '::bind::params'
+
+  if $owner {
+    $bindowner = $owner
+  } else {
+    $bindowner = $::bind::params::bindowner
+  }
 
   if $group {
     $bindgroup = $group

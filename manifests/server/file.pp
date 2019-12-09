@@ -43,9 +43,9 @@ define bind::server::file (
   include '::bind::params'
 
   if $owner {
-    $bindowner = $owner
+    $binduser = $owner
   } else {
-    $bindowner = $::bind::params::bindowner
+    $binduser = $::bind::params::binduser
   }
 
   if $group {
@@ -65,7 +65,7 @@ define bind::server::file (
   if ! defined(File[$zonedir]) {
     file { $zonedir:
       ensure => directory,
-      owner  => $bindowner,
+      owner  => $binduser,
       group  => $bindgroup,
       mode   => $dirmode,
     }

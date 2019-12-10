@@ -31,7 +31,7 @@
 define bind::server::file (
   $zonedir     = '/var/named',
   $owner       = 'root',
-  $group       = 'undef',
+  $group       = undef,
   $mode        = '0640',
   $dirmode     = '0750',
   $source      = undef,

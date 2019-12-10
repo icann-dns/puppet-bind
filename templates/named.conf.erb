@@ -91,7 +91,12 @@ options {
 
 <% end -%>
     dnssec-enable <%= @dnssec_enable %>;
+<%- if @recursion == 'yes' -%>
     dnssec-validation <%= @dnssec_validation %>;
+  <%- if @bindkeys_file -%>
+    bindkeys-file "<%= @bindkeys_file %>";
+  <% end -%>
+<% end -%>
 };
 
 logging {

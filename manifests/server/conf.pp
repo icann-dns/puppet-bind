@@ -53,7 +53,7 @@
 #  $zones:
 #   Hash of managed zones and their configuration. The key is the zone name
 #   and the value is an array of config lines. Default: empty
-#  $tsig:
+#  $keys:
 #   Hash of managed tsig keys and their configuration. The key is the tsig keys name
 #   and the value is an array of config lines. Default: empty
 #  $includes:
@@ -111,6 +111,7 @@ define bind::server::conf (
   $extra_options          = {},
   $dnssec_enable          = 'yes',
   $dnssec_validation      = 'yes',
+  $bindkeys_file          = undef,
   $zones                  = {},
   $keys                   = {},
   $includes               = [],
@@ -118,6 +119,13 @@ define bind::server::conf (
 ) {
 
   # Everything is inside a single template
+  file { $directory:
+    ensure => directory,
+    owner  => 'bind',
+    group  => 'bind',
+    mode   => '0755',
+  }
+
   file { $title:
     notify  => Class['::bind::service'],
     content => template('bind/named.conf.erb'),

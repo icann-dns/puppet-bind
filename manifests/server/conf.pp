@@ -120,10 +120,11 @@ define bind::server::conf (
 
   # Everything is inside a single template
   file { $directory:
-    ensure => directory,
-    owner  => 'bind',
-    group  => 'bind',
-    mode   => '0755',
+    ensure  => directory,
+    owner   => 'bind',
+    group   => 'bind',
+    mode    => '0755',
+    require => Class['::bind::package'],
   }
 
   file { $title:

@@ -62,6 +62,7 @@ define bind::server::file (
       owner  => $owner,
       group  => $bindgroup,
       mode   => $dirmode,
+      require => Class['::bind::package'],
     }
   }
 

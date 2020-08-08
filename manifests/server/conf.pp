@@ -46,8 +46,6 @@
 #  $extra_options:
 #   Hash for any additional options that must go in the 'options' declaration.
 #   Default: empty
-#  $dnssec_enable:
-#   Enable DNSSEC support. Default: 'yes'
 #  $dnssec_validation:
 #   Enable DNSSEC validation. Default: 'yes'
 #  $zones:
@@ -109,7 +107,6 @@ define bind::server::conf (
   $allow_transfer         = [],
   $check_names            = [],
   $extra_options          = {},
-  $dnssec_enable          = 'yes',
   $dnssec_validation      = 'yes',
   $bindkeys_file          = undef,
   $zones                  = {},

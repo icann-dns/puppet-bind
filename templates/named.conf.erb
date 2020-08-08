@@ -90,7 +90,6 @@ options {
 <% end -%>
 
 <% end -%>
-    dnssec-enable <%= @dnssec_enable %>;
 <%- if @recursion == 'yes' -%>
     dnssec-validation <%= @dnssec_validation %>;
   <%- if @bindkeys_file -%>

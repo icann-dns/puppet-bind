@@ -5,12 +5,9 @@
 class bind::server (
   $chroot               = false,
   $packagenameprefix    = $::bind::params::packagenameprefix,
-  $named_checkzone_path = '/usr/sbin/named-checkzone',
 ) inherits ::bind::params {
-
-  class { '::bind':
+  class { 'bind':
     chroot            => $chroot,
     packagenameprefix => $packagenameprefix,
   }
-
 }

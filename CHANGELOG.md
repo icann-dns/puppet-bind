@@ -1,3 +1,6 @@
+#### 2025-06-09 - 0.6.0
+* enable syslog
+
 #### 2025-02-04 - 0.5.7
 * Remove legacy facts usage.
 

@@ -134,17 +134,24 @@ logging {
         print-time yes;
         print-severity yes;
     };
-    category update         { xfr; };
-    category xfer-in        { xfr; };
-    category xfer-out       { xfr; };
-    category notify         { notify; };
-    category security       { security; };
-    category network        { network; };
-    category unmatched      { general; };
-    category config         { general; };
-    category general        { general; };
-    category default        { general; };
-    category dnssec         { dnssec; };
+    channel syslog {
+        syslog daemon;
+        severity info;
+        print-category yes;
+        print-time yes;
+        print-severity yes;
+    };
+    category update         { syslog; xfr; };
+    category xfer-in        { syslog; xfr; };
+    category xfer-out       { syslog; xfr; };
+    category notify         { syslog; notify; };
+    category security       { syslog; security; };
+    category network        { syslog; network; };
+    category unmatched      { syslog; general; };
+    category config         { syslog; general; };
+    category general        { syslog; general; };
+    category default        { syslog; general; };
+    category dnssec         { syslog; dnssec; };
 };
 
 <% if !@views.empty? -%>

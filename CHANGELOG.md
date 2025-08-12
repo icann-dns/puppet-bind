@@ -1,3 +1,6 @@
+#### 2025-06-09 - 0.6.1
+* disable timestamps on syslog logs
+
 #### 2025-06-09 - 0.6.0
 * enable syslog
 
